@@ -10,8 +10,8 @@
 
 - Alteração da Fonte (letra e cor),
 
-- Criação da páginas: Evento Suporte e Esuário,  
+- Criação da páginas: Evento Suporte e Usuário,  
 
-- Adicionado rodapé
+- Adicionado rodapé,
 
 - Adicionado função "Voltar" e "Sair" nas páginas.
