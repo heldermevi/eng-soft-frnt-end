@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+ 
+
+.alert{
+  margin-left:30px;
+  margin-right:400px;
+  margin-top:30px;
+}
+ h1{ font-size: 35px;
+    margin-top: 50px;
+    margin-left: 50px;
+    text-shadow: 1px 2px 8px #a1c9a6;
+    color: #064406;
+    text-align: start;   
+ }
+ 
+.pg{ text-align: center; 
+    margin-top: 150px;
+  }
+
+ .p1{
+   font-size: 20px;
+   margin-top: 50px;
+   margin-left: 50px;
+   text-shadow: 1px 2px 8px #a1c9a6;
+   color: #0b0e0b;
+   text-align: start;   
+ }
+
+.form-group {
+   width: 650px;
+   font-size: 25px;
+   margin-top: 40px;
+   margin-left: 50px;
+   text-shadow: 1px 2px 8px #a1c9a6;
+   color: #064406;
+   text-align: start;
+ }
+
+ .btn{ 
+   margin-left: 600px;
+   margin-top: 10px;
+ }
+ 
+#as{ 
+   
+  margin-left: 620px;
+  margin-top: 10px;
+}

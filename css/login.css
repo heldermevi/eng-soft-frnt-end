@@ -1,0 +1,82 @@
+
+body {
+    background-image : url('../img/Wallpaper-Black-Flower-Wall-Art-Minimalism-Art-6.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: 100% 100%;
+    text-shadow: 1px 0.2px 5px   #f9fdf8; 
+}
+
+.titulo{ 
+    font-size: 35px;
+    margin-top: 50px;
+    margin-left: 50px;
+    text-shadow: 1px 2px 8px #a1c9a6;
+    color: #064406;
+}
+
+
+.grupo {
+    margin-top: 15px;
+}
+
+.caixa-login { 
+    width: 300px;
+    height: 400px;
+    box-shadow: 1px 1px 10px 3px #c0ccbc; 
+    margin: auto;
+    margin-top: 70px;
+    padding: 20px;
+    border-radius: 5px;    
+}
+
+.titulo-login{
+    text-align: center;
+    color: var(--cor-primaria);
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 1px 2px 8px #d9e6db;     
+}
+
+label {
+    font-size: 12px;
+}
+
+input, #btn-entrar {
+    padding: 10px;
+    width: 100%; 
+    outline: none;
+}
+
+#btn-entrar {
+    margin-top: 25px;
+    background-color:  #175017;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    text-shadow: none;
+    padding: 15px;
+}
+
+#btn-entrar:hover {
+    cursor: pointer;
+    background-color:  #068f06;     
+}
+
+.esqueci-minha-senha {
+    text-align: right;
+    font-style: italic;
+    margin-top: 3px;
+}
+
+.esqueci-minha-senha a {
+    color: #c45656;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    text-shadow: none;
+}
+
+
+
