@@ -1,8 +1,6 @@
 const URL = 'http://localhost:3400/clientes';
 let modoEdicao = false;
-
 let listaClientes = [];
-
 let btnAdicionar = document.getElementById('btn-adicionar');
 let tabelaCliente = document.querySelector('table>tbody');
 let modalCliente = new bootstrap.Modal(document.getElementById("modal-cliente"), {});
@@ -26,27 +24,19 @@ btnAdicionar.addEventListener('click', () =>{
     limparModalCliente();
     modalCliente.show();
 });
-
-btnSalvar.addEventListener('click', () => {
-    // 1° Capturar os dados do modal
-    let cliente = obterClienteDoModal();
-
-    // 2° Se os campos obrigatorios foram preenchidos.
+btnSalvar.addEventListener('click', () => {     
+    let cliente = obterClienteDoModal();     
     if(!cliente.cpfOuCnpj || !cliente.email){
         alert("E-mail e CPF são obrigatórios.")
         return;
     }
-
     (modoEdicao) ? atualizarClienteBackEnd(cliente) : adicionarClienteBackEnd(cliente);
-
 });
 
 btnCancelar.addEventListener('click', () => {
     modalCliente.hide();
 });
-
 function obterClienteDoModal(){
-
     return new Cliente({
         id: formModal.id.value,
         email: formModal.email.value,
@@ -57,10 +47,8 @@ function obterClienteDoModal(){
                 ? new Date(formModal.dataCadastro.value).toISOString()
                 : new Date().toISOString()
     });
-}
- 
+} 
 function obterClientes() {
-
     fetch(URL, {
         method: 'GET',
         headers :{
@@ -78,16 +66,12 @@ function obterClientes() {
 function editarCliente(id){
     modoEdicao = true;
     tituloModal.textContent = "Editar cliente"
-
-    let cliente = listaClientes.find(cliente => cliente.id == id);
-    
+    let cliente = listaClientes.find(cliente => cliente.id == id);    
     atualizarModalCliente(cliente);
-
     modalCliente.show();
 }
 
 function atualizarModalCliente(cliente){
-
     formModal.id.value = cliente.id;
     formModal.nome.value = cliente.nome;
     formModal.cpf.value = cliente.cpfOuCnpj;
@@ -97,30 +81,21 @@ function atualizarModalCliente(cliente){
 }
 
 function limparModalCliente(){
-
-    formModal.id.value ="";
-    formModal.nome.value = "";
-    formModal.cpf.value = "";
-    formModal.email.value = "";
-    formModal.telefone.value = "";
-    formModal.dataCadastro.value = "";
+    formModal.id.value = "" ;
+    formModal.nome.value = "" ;
+    formModal.cpf.value = "" ;
+    formModal.email.value = "" ;
+    formModal.telefone.value = "" ;
+    formModal.dataCadastro.value = "" ;
 }
-
 function excluirCliente(id){
-
     let cliente = listaClientes.find(c => c.id == id);
-
     if(confirm("Excluir cliente " + cliente.nome + " ? ")){
         excluirClienteBackEnd(cliente);
-    }
-    
+    }    
 }
-
-function criarLinhaNaTabela(cliente) {
-    // 1° Criar uma linha da tabela OK
-    let tr = document.createElement('tr');
-
-    // 2° Criar as TDs OK
+function criarLinhaNaTabela(cliente) {    
+    let tr = document.createElement('tr');    
     let tdId = document.createElement('td');
     let tdNome = document.createElement('td');
     let tdCPF = document.createElement('td');
@@ -128,9 +103,7 @@ function criarLinhaNaTabela(cliente) {
     let tdTelefone = document.createElement('td');
     let tdDataCadastro = document.createElement('td');
     let tdAcoes = document.createElement('td');
-
-
-    // 3° Atualizar as Tds com os valores do cliente OK
+    
     tdId.textContent = cliente.id;
     tdNome.textContent = cliente.nome;
     tdCPF.textContent = cliente.cpfOuCnpj;
@@ -145,9 +118,6 @@ function criarLinhaNaTabela(cliente) {
                          <i class="fa-solid fa-trash" style="color:white"></i>  Excluir
                          </button>`;
 
-
-
-    // 4° Adicionar as TDs dentro da linha criei. OK
     tr.appendChild(tdId);
     tr.appendChild(tdNome);
     tr.appendChild(tdCPF);
@@ -155,25 +125,18 @@ function criarLinhaNaTabela(cliente) {
     tr.appendChild(tdTelefone);
     tr.appendChild(tdDataCadastro);
     tr.appendChild(tdAcoes);
-
-    // 5° Adicionar a linha na tabela.
+    
     tabelaCliente.appendChild(tr);
 }
 
-function popularTabela(clientes) {
-
-    // Limpar a tabela...
-    tabelaCliente.textContent = "";
-
+function popularTabela(clientes) {   
+    tabelaCliente.textContent = "" ;
     clientes.forEach(cliente => {
         criarLinhaNaTabela(cliente);
     });
 }
-
 function adicionarClienteBackEnd(cliente){
-
     cliente.dataCadastro = new Date().toISOString();
-
     fetch(URL, {
         method: "POST",
         headers: {
@@ -184,12 +147,9 @@ function adicionarClienteBackEnd(cliente){
     })
     .then(response => response.json())
     .then(response => {
-
         let novoCliente = new Cliente(response);
         listaClientes.push(novoCliente);
-
         popularTabela(listaClientes)
-
         modalCliente.hide();
         Swal.fire({
             position: ' center',
@@ -203,10 +163,7 @@ function adicionarClienteBackEnd(cliente){
         console.log(error)
     })
 }
-
-
 function atualizarClienteBackEnd(cliente){
-
     fetch(`${URL}/${cliente.id}`, {
         method: "PUT",
         headers: {
@@ -219,7 +176,6 @@ function atualizarClienteBackEnd(cliente){
     .then(() => {
         atualizarClienteNaLista(cliente, false);
         modalCliente.hide();
-
         Swal.fire({
             position: 'center',
             icon: 'success',
@@ -234,7 +190,6 @@ function atualizarClienteBackEnd(cliente){
 }
 
 function excluirClienteBackEnd(cliente){
-
     fetch(`${URL}/${cliente.id}`, {
         method: "DELETE",
         headers: {
@@ -260,15 +215,11 @@ function excluirClienteBackEnd(cliente){
 }
 
 function atualizarClienteNaLista(cliente, removerCliente){
-
     let indice = listaClientes.findIndex((c) => c.id == cliente.id);
-
     (removerCliente) 
         ? listaClientes.splice(indice, 1)
         : listaClientes.splice(indice, 1, cliente);
-
     popularTabela(listaClientes);
 }
-
 obterClientes();
 
