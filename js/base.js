@@ -8,15 +8,15 @@ function salvarUsuario(usuario){
 }
 
 function obterToken(){
-    return localStorage.getItem("token");  //retorna o valor do item "token"
+    return localStorage.getItem("token");  
 }
 
 function obterUsuario(){
-    return localStorage.getItem("usuario") || "{}";   //retorna o valor do item "usuario", se não existir, ret
+    return localStorage.getItem("usuario") || "{}";   
 }
 
 function sairSistema(){
-    localStorage.removeItem("token");//remove o item "token", limpando a sessão
+    localStorage.removeItem("token"); 
     localStorage.removeItem("usuario");
     direcionarTelaDeLogin();
 }
@@ -27,25 +27,17 @@ function direcionarTelaDeLogin(){
 
 function usuarioEstaLogado(){
     let token = obterToken();
-
     return !!token;
 }
-
 function validarUsuarioAutenticado(){
-
-    let logado = usuarioEstaLogado();
-
-    // Só vai entrar aqui se eu estiver na tela login
-    if(window.location.pathname == "/login.html"){
-        
+    let logado = usuarioEstaLogado();     
+    if(window.location.pathname == "/login.html"){        
         if(logado){
             window.open("controle-cliente.html", '_self')
         }
     } else if(!logado && window.location.pathname == "/controle-cliente.html"){
         direcionarTelaDeLogin();
     }
-
 }
-
 
 validarUsuarioAutenticado();
