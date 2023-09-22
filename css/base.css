@@ -64,15 +64,13 @@ li {
 
 a {
 	color: #fff;
-	text-decoration: none;
-	 
+	text-decoration: none;	 
 }
 
 :root {
     --cor-primaria: #315c1d;
     --cor-secundaria:#aec2a8;
 }
-
 
 table.table {
     box-shadow: 0 0 10px 0 rgba(157, 221, 155, 0.82);
